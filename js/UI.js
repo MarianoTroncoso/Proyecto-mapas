@@ -69,4 +69,22 @@ class UI {
         });
         this.markers.addTo(this.mapa);
     }
+    // buscador
+    obtenerSugerencias(){
+        this.api.obtenerDatos()
+            .then(datos => {
+                // obtener datos
+                const resultado = datos.respuestaJSON.results;
+
+                // enviar el json y la busqueda para el filtrado
+                this.filtrarSugerencias(resultados, busqueda);
+            })
+    }
+
+    // filtra las sugerencias en base al input
+    filtrarSugerencias(resultado, busqueda){
+        // filtrar con .filter
+
+        // mostrar pines
+    }
 }
