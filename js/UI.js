@@ -70,11 +70,11 @@ class UI {
         this.markers.addTo(this.mapa);
     }
     // buscador
-    obtenerSugerencias(){
+    obtenerSugerencias(busqueda){
         this.api.obtenerDatos()
             .then(datos => {
                 // obtener datos
-                const resultado = datos.respuestaJSON.results;
+                const resultados = datos.respuestaJSON.results;
 
                 // enviar el json y la busqueda para el filtrado
                 this.filtrarSugerencias(resultados, busqueda);
@@ -84,7 +84,9 @@ class UI {
     // filtra las sugerencias en base al input
     filtrarSugerencias(resultado, busqueda){
         // filtrar con .filter
-
+        const filtro = resultado.filter(filtro => filtro.calle.indexOf(busqueda) !== -1)
+        console.log(filtro);
         // mostrar pines
+        this.mostrarPines(filtro);
     }
 }

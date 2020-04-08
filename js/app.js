@@ -8,8 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // habilitar busqueda de establecimientos
 const buscador = document.querySelector('#buscar input');
 buscador.addEventListener('input', () => {
-    if(buscador.value.lenght > 5){
+    // console.log(buscador.value.length)
+    if(buscador.value.length > 5){
         // buscar en la API
         ui.obtenerSugerencias(buscador.value);
+    }else{
+        // si buscas, y borras el contenido del buscador
+        // que te muestre todos de nuevo
+        ui.mostrarEstablecimientos();
     }
+
 })
