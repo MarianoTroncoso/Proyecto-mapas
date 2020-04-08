@@ -51,11 +51,19 @@ class UI {
             // destructuring
             const{latitude, longitude, calle, regular, premium} = dato;
 
+            // crear popup
+            const opcionesPopup = L.popup().
+                setContent(`
+                    <p>Calle: ${calle}</p>
+                    <p><b>Regular:</b> $ ${regular}</p>
+                    <p><b>Premium:</b> $ ${premium}</p>
+                `);
+
             // agregar el pint
             const marker = new L.marker([
                 parseFloat(latitude),
                 parseFloat(longitude)
-            ]);
+            ]).bindPopup(opcionesPopup);
             // agregamos el marker a la capa de markers
             this.markers.addLayer(marker);
         });
